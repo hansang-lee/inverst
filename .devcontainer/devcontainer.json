@@ -1,0 +1,51 @@
+{
+	"name": "invest",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".",
+		"args": {
+			"BASE_IMAGE": "ubuntu:22.04"
+		}
+	},
+	"containerEnv": {
+		"DISPLAY": "${localEnv:DISPLAY}",
+		"XAUTHORITY": "${localEnv:XAUTHORITY}"
+	},
+	"mounts": [
+	],
+	"privileged": true,
+	"securityOpt": [
+		"seccomp=unconfined"
+	],
+	"capAdd": [
+		"SYS_PTRACE"
+	],
+	"runArgs": [
+		"--network=host",
+		"--ipc=host"
+	],
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"C_Cpp.default.cppStandard": "c++20",
+				"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+				"cmake.buildDirectory": "${workspaceFolder}/build/${buildType}",
+				"cSpell.diagnosticLevel": "Hint",
+				"editor.formatOnSave": true,
+				"editor.detectIndentation": false,
+				"editor.insertSpaces": true,
+				"editor.tabSize": 4
+			},
+			"extensions": [
+				"ms-vscode.cpptools",
+				"twxs.cmake",
+				"ms-vscode.cmake-tools",
+				"usernamehw.errorlens",
+				"josetr.cmake-language-support-vscode",
+				"ms-azuretools.vscode-docker",
+				"matepek.vscode-catch2-test-adapter",
+				"cschlosser.doxdocgen"
+			]
+		}
+	}
+}
